@@ -8,9 +8,11 @@ namespace Models;
 
 public partial class FolhaPagamentoContext : DbContext
 {
-    public FolhaPagamentoContext(DbContextOptions<FolhaPagamentoContext> options)
-        : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        var connectionString = "Server=127.0.0.1;Database=folha_pagamento;Uid=root;Pwd=root;";
+        var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
+        optionsBuilder.UseMySql(connectionString, serverVersion);
     }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
