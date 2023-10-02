@@ -69,9 +69,13 @@
               "target": "Package",
               "version": "[7.0.11, )"
             },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0-preview5, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.0-alpha.1, )"
             }
           },
           "imports": [

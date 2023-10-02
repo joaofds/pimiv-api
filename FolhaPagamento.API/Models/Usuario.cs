@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace FolhaPagamento.API.Models;
+namespace Models;
 
 /// <summary>
 /// tabela de usuarios
@@ -14,7 +14,7 @@ namespace FolhaPagamento.API.Models;
 [Table("usuarios")]
 [Index("Email", Name = "email_UNIQUE", IsUnique = true)]
 [Index("Id", Name = "id_UNIQUE", IsUnique = true)]
-public partial class Usuarios
+public partial class Usuario
 {
     [Key]
     [Column("id")]

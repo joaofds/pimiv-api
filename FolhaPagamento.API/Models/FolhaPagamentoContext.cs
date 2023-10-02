@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace FolhaPagamento.API.Models;
+namespace Models;
 
 public partial class FolhaPagamentoContext : DbContext
 {
@@ -13,7 +13,7 @@ public partial class FolhaPagamentoContext : DbContext
     {
     }
 
-    public virtual DbSet<Usuarios> Usuarios { get; set; }
+    public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -21,7 +21,7 @@ public partial class FolhaPagamentoContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Usuarios>(entity =>
+        modelBuilder.Entity<Usuario>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
