@@ -21,9 +21,9 @@ public partial class FolhaPagamentoContext : DbContext
 
     public virtual DbSet<Cargo> Cargos { get; set; }
 
-    public virtual DbSet<Colaboradores> Colaboradores { get; set; }
+    public virtual DbSet<Colaborador> Colaborador { get; set; }
 
-    public virtual DbSet<ColaboradorBeneficio> ColaboradoresBeneficios { get; set; }
+    public virtual DbSet<ColaboradorBeneficio> ColaboradorBeneficio { get; set; }
 
     public virtual DbSet<Endereco> Enderecos { get; set; }
 
@@ -46,11 +46,11 @@ public partial class FolhaPagamentoContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK_cargos_id");
         });
 
-        modelBuilder.Entity<Colaboradores>(entity =>
+        modelBuilder.Entity<Colaborador>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_colaboradores_id");
 
-            entity.HasOne(d => d.Cargo).WithMany(p => p.Colaboradores).HasConstraintName("FK_colaboradores_cargo_id__cargos_id");
+            entity.HasOne(d => d.Cargo).WithMany(p => p.Colaborador).HasConstraintName("FK_colaboradores_cargo_id__cargos_id");
         });
 
         modelBuilder.Entity<ColaboradorBeneficio>(entity =>
