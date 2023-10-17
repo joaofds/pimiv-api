@@ -6,7 +6,7 @@ using Contracts;
 namespace Controllers
 {
     [ApiController]
-    [Route("api/colaborador")]
+    [Route("api/colaboradores")]
     public class ColaboradorController : Controller
     {
         private readonly IColaboradorRepository _colaboradorRepository;
