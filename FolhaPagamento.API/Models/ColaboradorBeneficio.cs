@@ -10,7 +10,7 @@ namespace Models;
 
 [Keyless]
 [Table("colaboradores_beneficios")]
-public partial class ColaboradoresBeneficios
+public partial class ColaboradorBeneficio
 {
     [Column("colaborador_id")]
     public int? ColaboradorId { get; set; }
