@@ -10,7 +10,7 @@ namespace Models;
 
 [Keyless]
 [Table("colaboradores_beneficios")]
-public partial class ColaboradorBeneficio
+public partial class ColaboradoresBeneficios
 {
     [Column("colaborador_id")]
     public int? ColaboradorId { get; set; }
@@ -22,5 +22,5 @@ public partial class ColaboradorBeneficio
     public virtual Beneficio Beneficio { get; set; }
 
     [ForeignKey("ColaboradorId")]
-    public virtual Colaborador Colaborador { get; set; }
+    public virtual Colaboradores Colaborador { get; set; }
 }

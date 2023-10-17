@@ -9,9 +9,10 @@ using Microsoft.EntityFrameworkCore;
 namespace Models;
 
 [Table("colaboradores")]
-public partial class Colaborador
+public partial class Colaboradores
 {
     [Key]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("cargo_id")]

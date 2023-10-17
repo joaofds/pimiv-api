@@ -22,4 +22,7 @@ public partial class Beneficio
 
     [Column("valor_beneficio", TypeName = "decimal(9, 2)")]
     public decimal? ValorBeneficio { get; set; }
+
+    [Column("status")]
+    public byte? Status { get; set; }
 }

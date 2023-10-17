@@ -24,5 +24,5 @@ public partial class Cargo
     public decimal? Salario { get; set; }
 
     [InverseProperty("Cargo")]
-    public virtual ICollection<Colaborador> Colaboradores { get; set; } = new List<Colaborador>();
+    public virtual ICollection<Colaboradores> Colaboradores { get; set; } = new List<Colaboradores>();
 }

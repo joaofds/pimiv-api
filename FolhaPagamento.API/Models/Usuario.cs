@@ -35,6 +35,9 @@ public partial class Usuario
     [Unicode(false)]
     public string Senha { get; set; }
 
+    [Column("status")]
+    public byte? Status { get; set; }
+
     [Column("data_registro", TypeName = "datetime")]
     public DateTime? DataRegistro { get; set; }
 }
