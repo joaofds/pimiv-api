@@ -23,13 +23,13 @@ public partial class FolhaPagamentoContext : DbContext
 
     public virtual DbSet<Colaboradores> Colaboradores { get; set; }
 
-    public virtual DbSet<ColaboradoresBeneficios> ColaboradoresBeneficios { get; set; }
+    public virtual DbSet<ColaboradorBeneficio> ColaboradoresBeneficios { get; set; }
 
     public virtual DbSet<Endereco> Enderecos { get; set; }
 
     public virtual DbSet<FolhaPagamento> FolhaPagamentos { get; set; }
 
-    public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Usuario> Usuario { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhadePagamento;User ID=sa;Password=root;trustservercertificate=true");
@@ -53,7 +53,7 @@ public partial class FolhaPagamentoContext : DbContext
             entity.HasOne(d => d.Cargo).WithMany(p => p.Colaboradores).HasConstraintName("FK_colaboradores_cargo_id__cargos_id");
         });
 
-        modelBuilder.Entity<ColaboradoresBeneficios>(entity =>
+        modelBuilder.Entity<ColaboradorBeneficio>(entity =>
         {
             entity.HasOne(d => d.Beneficio).WithMany().HasConstraintName("FK_colaboradores_beneficios_beneficio_id__beneficios_id");
 

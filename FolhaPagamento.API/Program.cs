@@ -1,6 +1,5 @@
 using Models;
 using Repositories;
-using Microsoft.EntityFrameworkCore;
 using Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
