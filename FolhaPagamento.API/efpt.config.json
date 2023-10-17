@@ -4,7 +4,7 @@
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": false,
+   "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "Models",
@@ -16,11 +16,35 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "usuarios",
+         "Name": "[dbo].[beneficios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cargos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[colaboradores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[colaboradores_beneficios]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[enderecos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[folha_pagamentos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[usuarios]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "wsl",
+   "UiHint": "desktop-n7lob35.FolhadePagamento.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
