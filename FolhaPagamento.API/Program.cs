@@ -10,6 +10,7 @@ builder.Services.AddDbContext<FolhaPagamentoContext>();
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
 
 var app = builder.Build();
 

@@ -55,5 +55,5 @@ public partial class Endereco
 
     [ForeignKey("ColaboradorId")]
     [InverseProperty("Enderecos")]
-    public virtual Colaboradores Colaborador { get; set; }
+    public virtual Colaborador Colaborador { get; set; }
 }

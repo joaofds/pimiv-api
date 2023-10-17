@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Models;
 
 [Table("colaboradores")]
-public partial class Colaboradores
+public partial class Colaborador
 {
     [Key]
     [Column("id")]
@@ -38,7 +38,7 @@ public partial class Colaboradores
     public byte? Status { get; set; }
 
     [ForeignKey("CargoId")]
-    [InverseProperty("Colaboradores")]
+    [InverseProperty("Colaborador")]
     public virtual Cargo Cargo { get; set; }
 
     [InverseProperty("Colaborador")]

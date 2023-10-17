@@ -35,5 +35,5 @@ public partial class FolhaPagamento
 
     [ForeignKey("ColaboradorId")]
     [InverseProperty("FolhaPagamentos")]
-    public virtual Colaboradores Colaborador { get; set; }
+    public virtual Colaborador Colaborador { get; set; }
 }

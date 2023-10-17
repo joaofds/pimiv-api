@@ -22,5 +22,5 @@ public partial class ColaboradorBeneficio
     public virtual Beneficio Beneficio { get; set; }
 
     [ForeignKey("ColaboradorId")]
-    public virtual Colaboradores Colaborador { get; set; }
+    public virtual Colaborador Colaborador { get; set; }
 }
