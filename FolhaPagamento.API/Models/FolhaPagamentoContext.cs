@@ -32,7 +32,7 @@ public partial class FolhaPagamentoContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhadePagamento;Persist Security Info=True;User ID=sa;Password=root");
+        => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhadePagamento;User ID=sa;Password=root;trustservercertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
