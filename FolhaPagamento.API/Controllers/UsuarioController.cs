@@ -1,7 +1,7 @@
 ﻿using Models;
 using Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Controllers.Contracts;
+using Contracts;
 
 namespace Controllers
 {

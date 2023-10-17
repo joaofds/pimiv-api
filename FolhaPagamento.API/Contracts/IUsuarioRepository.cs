@@ -1,6 +1,6 @@
 ﻿using Models;
 
-namespace Controllers.Contracts
+namespace Contracts
 {
     public interface IUsuarioRepository
     {

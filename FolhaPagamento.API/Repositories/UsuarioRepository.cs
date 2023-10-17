@@ -1,4 +1,4 @@
-﻿using Controllers.Contracts;
+﻿using Contracts;
 using Models;
 
 namespace Repositories
