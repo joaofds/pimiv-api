@@ -15,6 +15,10 @@ public partial class Beneficio
     [Column("id")]
     public int Id { get; set; }
 
+    [Column("nome")]
+    [StringLength(100)]
+    public string Nome { get; set; }
+
     [Column("descricao")]
     [StringLength(100)]
     [Unicode(false)]

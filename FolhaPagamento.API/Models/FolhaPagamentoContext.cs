@@ -17,7 +17,7 @@ public partial class FolhaPagamentoContext : DbContext
     {
     }
 
-    public virtual DbSet<Beneficio> Beneficios { get; set; }
+    public virtual DbSet<Beneficio> Beneficio { get; set; }
 
     public virtual DbSet<Cargo> Cargo { get; set; }
 
@@ -25,14 +25,14 @@ public partial class FolhaPagamentoContext : DbContext
 
     public virtual DbSet<ColaboradorBeneficio> ColaboradorBeneficio { get; set; }
 
-    public virtual DbSet<Endereco> Enderecos { get; set; }
+    public virtual DbSet<Endereco> Endereco { get; set; }
 
-    public virtual DbSet<FolhaPagamento> FolhaPagamentos { get; set; }
+    public virtual DbSet<FolhaPagamento> FolhaPagamento { get; set; }
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhadePagamento;User ID=sa;Password=root;trustservercertificate=true");
+        => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhaPagamento;User ID=sa;Password=root;trustservercertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
