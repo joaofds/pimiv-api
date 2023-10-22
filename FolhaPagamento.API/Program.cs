@@ -11,6 +11,7 @@ builder.Services.AddDbContext<FolhaPagamentoContext>();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 
 var app = builder.Build();
 

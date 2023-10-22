@@ -1,5 +1,4 @@
 ﻿using Models;
-using Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Contracts;
 
@@ -25,7 +24,7 @@ namespace Controllers
                 return Ok("Usuário cadastrado com sucesso.");
             }
 
-            return BadRequest("Oops... erro ao salver o usuário.");
+            return BadRequest("Oops... erro ao salvar o usuário.");
         }
 
         [HttpGet("{id}")]

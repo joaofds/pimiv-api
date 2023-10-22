@@ -19,7 +19,7 @@ public partial class FolhaPagamentoContext : DbContext
 
     public virtual DbSet<Beneficio> Beneficios { get; set; }
 
-    public virtual DbSet<Cargo> Cargos { get; set; }
+    public virtual DbSet<Cargo> Cargo { get; set; }
 
     public virtual DbSet<Colaborador> Colaborador { get; set; }
 

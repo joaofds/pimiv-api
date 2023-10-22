@@ -1,5 +1,4 @@
 ﻿using Models;
-using Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Contracts;
 
@@ -25,7 +24,7 @@ namespace Controllers
                 return Ok("Colaborador cadastrado com sucesso.");
             }
 
-            return BadRequest("Oops... erro ao salver o colaborador.");
+            return BadRequest("Oops... erro ao salvar o colaborador.");
         }
 
         [HttpGet("{id}")]
