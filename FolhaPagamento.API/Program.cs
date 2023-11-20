@@ -1,12 +1,39 @@
 using Models;
 using Repositories;
 using Contracts;
+using Config;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 builder.Services.AddDbContext<FolhaPagamentoContext>();
+
+// Jwt Settings
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(opt =>
+    {
+        var jwt = builder.Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+
+        opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidIssuer = jwt?.Issuer,
+            ValidAudience = jwt?.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt?.SecretKey!)),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
