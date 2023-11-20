@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolhaPagamento.API", "FolhaPagamento.API\FolhaPagamento.API.csproj", "{182CFCDB-77C6-4FFC-9662-AA3A9F31D11C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FolhaPagamento.API", "FolhaPagamento.API\FolhaPagamento.API.csproj", "{182CFCDB-77C6-4FFC-9662-AA3A9F31D11C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolhaPagamento.WEB", "FolhaPagamento.WEB\FolhaPagamento.WEB.csproj", "{8CD67ADC-7432-405E-B67D-A86B0B89C439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{182CFCDB-77C6-4FFC-9662-AA3A9F31D11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{182CFCDB-77C6-4FFC-9662-AA3A9F31D11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{182CFCDB-77C6-4FFC-9662-AA3A9F31D11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CD67ADC-7432-405E-B67D-A86B0B89C439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD67ADC-7432-405E-B67D-A86B0B89C439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD67ADC-7432-405E-B67D-A86B0B89C439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD67ADC-7432-405E-B67D-A86B0B89C439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
