@@ -1,2 +1,19 @@
 .bg-grey { background-color: #eeeeee; }
 .bg-green { background-color: #37B059; }
+
+.nav a {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.nav a:hover {
+    background-color: #2B8644;
+}
+
+.nav i {
+    margin-right: 3px;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0px;
+}
