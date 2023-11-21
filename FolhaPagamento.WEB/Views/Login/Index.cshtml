@@ -1,0 +1,43 @@
+﻿@{  
+    Layout = null;  
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FolhaPagamento.WEB.styles.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row main">
+            <div class="col-md-6 d-flex align-items-center justify-content-center bg-grey">
+                <i class="fa fa-user user-icon"></i>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="col-md-4">
+                    <div class="form" action="#">
+                        <div class="input-group flex-nowrap mb-2">
+                            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Usuário" aria-label="Usuário" aria-describedby="addon-wrapping">
+                        </div>
+                        <div class="input-group flex-nowrap mb-2">
+                            <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="addon-wrapping">
+                        </div>
+                        <button type="submit" class="btn bg-green w-100 text-light">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
