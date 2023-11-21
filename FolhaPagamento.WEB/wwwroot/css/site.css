@@ -1,5 +1,13 @@
-.bg-grey { background-color: #eeeeee; }
-.bg-green { background-color: #37B059; }
+:root {
+    --bg-grey: #B7B7B7;
+    --bg-grey-dark: #828282;
+    --bg-green: #37B059;
+    --bg-green-dark: #2B8644;
+}
+
+.bg-grey { background-color: var(--bg-grey); }
+.bg-dark-grey { background-color: var(--bg-dark-grey); }
+.bg-green { background-color: var(--bg-green); }
 
 .nav a {
     font-weight: 600;
@@ -7,13 +15,24 @@
 }
 
 .nav a:hover {
-    background-color: #2B8644;
+    background-color: var(--bg-green-dark);
 }
 
 .nav i {
     margin-right: 3px;
+    font-size: 24px;
 }
 
 .nav-pills .nav-link {
     border-radius: 0px;
+}
+
+.icon-box {
+    width: 42px;
+}
+
+.icon-box:hover {
+    cursor: pointer;
+    background-color: var(--bg-grey-dark);
+    color: ghostwhite;
 }
