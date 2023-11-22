@@ -28,11 +28,30 @@
 }
 
 .icon-box {
-    width: 42px;
+    width: 48px;
 }
 
 .icon-box:hover {
     cursor: pointer;
     background-color: var(--bg-grey-dark);
     color: ghostwhite;
+}
+
+.form-box {
+    display: inline-block;
+    padding: 20px;
+    /* Optional: 
+     A normal dashed border can be set as a fallback, particularly if older browsers need to be supported. Notes:
+     - the 4px width here is overwritten with any border-image-width value
+     - a border-image-width can be omitted if it is the same value as the dashed border width
+  */
+    border: dashed 2px #000; /*optional*/
+    /* the initial value of border-style is "none", so it must be set to a different value for the border-image to show*/
+    border-style: dashed;
+    /* Individual border image properties */
+    border-image-source: url("https://i.stack.imgur.com/wLdVc.png");
+    border-image-slice: 3;
+    border-image-repeat: round;
+    /* or use the shorthand border-image */
+    border-image: url("https://i.stack.imgur.com/wLdVc.png") 2 round;
 }
