@@ -11,7 +11,8 @@ namespace FolhaPagamento.WEB.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet("reserva/list")]
+        public IActionResult All()
         {
             return View();
         }

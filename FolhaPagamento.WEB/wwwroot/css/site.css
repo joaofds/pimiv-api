@@ -3,11 +3,22 @@
     --bg-grey-dark: #828282;
     --bg-green: #37B059;
     --bg-green-dark: #2B8644;
+    --bg-dark: #000;
 }
 
 .bg-grey { background-color: var(--bg-grey); }
 .bg-dark-grey { background-color: var(--bg-dark-grey); }
 .bg-green { background-color: var(--bg-green); }
+.bg-dark { var(--bg-dark) }
+
+a:link {
+    text-decoration: none;
+    color: var(--bg-dark);
+}
+
+a:visited {
+    color: var(--bg-dark);
+}
 
 .nav a {
     font-weight: 600;
@@ -40,18 +51,9 @@
 .form-box {
     display: inline-block;
     padding: 20px;
-    /* Optional: 
-     A normal dashed border can be set as a fallback, particularly if older browsers need to be supported. Notes:
-     - the 4px width here is overwritten with any border-image-width value
-     - a border-image-width can be omitted if it is the same value as the dashed border width
-  */
-    border: dashed 2px #000; /*optional*/
-    /* the initial value of border-style is "none", so it must be set to a different value for the border-image to show*/
+    border: dashed 2px #000;
     border-style: dashed;
-    /* Individual border image properties */
     border-image-source: url("https://i.stack.imgur.com/wLdVc.png");
     border-image-slice: 3;
-    border-image-repeat: round;
-    /* or use the shorthand border-image */
     border-image: url("https://i.stack.imgur.com/wLdVc.png") 2 round;
 }
