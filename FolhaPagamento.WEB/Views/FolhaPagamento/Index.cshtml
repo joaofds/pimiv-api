@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Gerar Folha de Pagamento";
+}
+
+@section header {
+    <div id="header">
+        <div class="d-flex justify-content-between">
+            <div class="bg-white w-50">
+                <h2 class="display-6 fw-bold ms-5">@ViewData["Title"]</h2>
+            </div>
+            <div class="d-flex align-items-center bg-grey w-50">
+                <a href="@Url.Action("index", "folhapagamento")" class="d-flex align-items-center justify-content-center icon-box h-100">
+                    <span class="fs-5">
+                        <i class="fa fa-files-o"></i>
+                    </span>
+                </a>
+                <a href="@Url.Action("all", "folhapagamento")" class="d-flex align-items-center justify-content-center icon-box h-100 icon-box-active">
+                    <span class="fs-5">
+                        <i class="fa fa-list-ol"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-start p-5">
+    <form class="gy-2 gx-3 align-items-center">
+        <div class="w-50 form-box mb-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Dados do Colaborador</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <label for="cargo">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" readonly>
+                </div>
+                <div class="col-md-4">
+                    <label for="admissao">Data de Admissão</label>
+                    <div class="input-group">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <input type="date" id="admissao" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-50 form-box">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Dados Financeiros</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="salario">Salário Bruto</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="salario" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inss">INSS</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="inss" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Benefícios</label>
+                    <div class="form-check">
+                        <label class="form-check-label" for="transporte">Vale Transporte</label>
+                        <input class="form-check-input" type="checkbox" value="" id="transporte">
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="alimentacao">Vale Alimentação</label>
+                        <input class="form-check-input" type="checkbox" value="" id="alimentacao">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="horaextra">Hora Extra</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="horaextra" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="outras">Outras Deduções</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="outras" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="referencia">Mês Referência</label>
+                    <div class="input-group">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <input type="month" id="referencia" class="form-control" min="08-2020" value="11-2023" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="liquido">Salário Liquído</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="liquido" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <div class="input-group d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success">Gerar Folha</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
