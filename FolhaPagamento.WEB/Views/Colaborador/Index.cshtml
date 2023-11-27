@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Cadastrar Colaborador";
+}
+
+@section header {
+    <div id="header">
+        <div class="d-flex justify-content-between">
+            <div class="bg-white w-50">
+                <h2 class="display-6 fw-bold ms-5">@ViewData["Title"]</h2>
+            </div>
+            <div class="d-flex align-items-center bg-grey w-50">
+                <a href="@Url.Action("index", "colaborador")" class="d-flex align-items-center justify-content-center icon-box h-100">
+                    <span class="fs-5">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                </a>
+                <a href="@Url.Action("all", "colaborador")" class="d-flex align-items-center justify-content-center icon-box h-100 icon-box-active">
+                    <span class="fs-5">
+                        <i class="fa fa-list-ol"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-start p-5">
+    <div class="w-75 form-box">
+        <form class="gy-2 gx-3 align-items-center">
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="Nome">Nome Completo</label>
+                    <input type="text" class="form-control" id="responsavel">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="Cep">CEP</label>
+                    <input type="text" class="form-control" id="cep">
+                </div>
+
+                <div class="col-md-5">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" class="form-control" id="logradouro">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="numero">Nº</label>
+                    <input type="text" class="form-control" id="numero">
+                </div>
+
+                <div class="col-md-7">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" class="form-control" id="complemento">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="uf">UF</label>
+                    <select class="form-select" aria-label="Estados" id="uf">
+                        <option selected>Selecione o estado...</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="admissao">Data de Admissão</label>
+                    <div class="input-group">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <input type="date" id="admissao" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="cargo">Cargo</label>
+                    <select class="form-select" id="cargo">
+                        <option selected>Selecione o cargo...</option>
+                        <option value="1">Atendente</option>
+                        <option value="2">Gerente</option>
+                    </select>
+                </div>
+
+                <div class="col-4">
+                    <label for="salario">Salário</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" id="salario" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <div class="input-group d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
