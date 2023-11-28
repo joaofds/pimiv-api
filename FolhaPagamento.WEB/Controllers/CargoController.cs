@@ -8,10 +8,30 @@ namespace FolhaPagamento.WEB.Controllers
 {
     public class CargoController : Controller
     {
-        public string BaseUrl = "http://localhost:5256/api";
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(string nome, float salario)
+        {
+            var cargo = new CargoViewModel();
+            cargo.Nome = nome;
+            cargo.Salario = salario;
+            string json = JsonSerializer.Serialize(cargo);
+
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{ApiService.BaseUrl}/cargos");
+            var content = new StringContent(json, null, "application/json");
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            //var result = await response.Content.ReadAsStringAsync();
+
+            //ViewBag.Error = "E-mail ou senha incorretos.";
+            return RedirectToAction("All");
         }
 
         [HttpGet("cargo/list")]
