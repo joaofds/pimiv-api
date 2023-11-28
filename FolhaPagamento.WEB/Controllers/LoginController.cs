@@ -12,7 +12,7 @@ namespace FolhaPagamento.WEB.Controllers
         }
 
         [HttpPost]
-        public IActionResult Auth(string email, string senha)
+        public IActionResult Index(string email, string senha)
         {
             string userMail = "test@domain.com";
             string pass = "123456";
