@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Novo Cargo";
+}
+
+@section header {
+    <div id="header">
+        <div class="d-flex justify-content-between">
+            <div class="bg-white w-50">
+                <h2 class="display-6 fw-bold ms-5">@ViewData["Title"]</h2>
+            </div>
+            <div class="d-flex align-items-center bg-grey w-50">
+                <a href="@Url.Action("index", "cargo")" class="d-flex align-items-center justify-content-center icon-box h-100">
+                    <span class="fs-5">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                </a>
+                <a href="@Url.Action("all", "cargo")" class="d-flex align-items-center justify-content-center icon-box h-100 icon-box-active">
+                    <span class="fs-5">
+                        <i class="fa fa-list-ol"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-start p-5">
+    <div class="w-50 form-box">
+        <form class="gy-2 gx-3 align-items-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="cargo">Nome do Cargo</label>
+                    <input type="text" class="form-control" name="cargo" id="cargo">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="salario">Salário</label>
+                    <div class="input-group">
+                        <div class="input-group-text">R$:</div>
+                        <input type="number" name="salario" id="salario" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <div class="input-group d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
