@@ -21,16 +21,24 @@
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center">
                 <div class="col-md-4">
-                    <div class="form" action="#">
-                        <div class="input-group flex-nowrap mb-2">
-                            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Usuário" aria-label="Usuário" aria-describedby="addon-wrapping">
+                    <form method="post" action="@Url.Action("auth", "Login")">
+                        <div class="form" action="#">
+                            @{
+                                if (ViewBag.Error != null)
+                                {
+                                    <div class="alert alert-danger" role="alert">Oops, E-mail ou senha incorretos! :(</div>
+                                }
+                            }
+                            <div class="input-group flex-nowrap mb-2">
+                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i></span>
+                                <input type="text" name="email" class="form-control" placeholder="Usuário" aria-label="Usuário" aria-describedby="addon-wrapping" value="test@domain.com">
+                            </div>
+                            <div class="input-group flex-nowrap mb-2">
+                                <input type="password" name="senha" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="addon-wrapping">
+                            </div>
+                            <button type="submit" class="btn bg-green w-100 text-light">Login</button>
                         </div>
-                        <div class="input-group flex-nowrap mb-2">
-                            <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="addon-wrapping">
-                        </div>
-                        <button type="submit" class="btn bg-green w-100 text-light">Login</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
