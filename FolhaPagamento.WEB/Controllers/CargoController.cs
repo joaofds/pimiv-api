@@ -28,9 +28,17 @@ namespace FolhaPagamento.WEB.Controllers
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
-            //var result = await response.Content.ReadAsStringAsync();
+            return RedirectToAction("All");
+        }
 
-            //ViewBag.Error = "E-mail ou senha incorretos.";
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"{ApiService.BaseUrl}/cargos/{id}");
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
             return RedirectToAction("All");
         }
 
