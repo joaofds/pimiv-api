@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<CargoViewModel>
+
+@{
     ViewData["Title"] = "Cargos";
 }
 
@@ -37,23 +39,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Atendente</td>
-                        <td>3500,00</td>
-                        <td class="text-right">
-                            <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Ver</a></li>
-                                    <li><a class="dropdown-item" href="#">Editar</a></li>
-                                    <li><a class="dropdown-item" href="#">Deletar</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var cargo in Model)
+                    {
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>@cargo.Nome</td>
+                            <td>@cargo.Salario</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Ver</a></li>
+                                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" href="#">Deletar</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
