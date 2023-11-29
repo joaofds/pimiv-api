@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Cargos";
+    var i = 0;
 }
 
 @section header {
@@ -41,8 +42,9 @@
                 <tbody>
                     @foreach (var cargo in Model)
                     {
+                        ++i;
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">@i</th>
                             <td>@cargo.Nome</td>
                             <td>@cargo.Salario</td>
                             <td class="text-right">

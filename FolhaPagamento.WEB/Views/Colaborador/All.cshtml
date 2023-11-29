@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Colaboradores";
+    var i = 0;
 }
 
 @section header {
@@ -44,7 +45,7 @@
                 <tbody>
                     @foreach (var c in Model)
                     {
-                        var i = 1;
+                        ++i;
                         <tr>
                             <th scope="row">@i</th>
                             <td>@c.nome</td>
@@ -65,7 +66,6 @@
                                 </div>
                             </td>
                         </tr>
-                        i++;
                     }
                 </tbody>
             </table>
