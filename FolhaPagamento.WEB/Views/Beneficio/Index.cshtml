@@ -26,18 +26,18 @@
 
 <div class="text-start p-5">
     <div class="w-50 form-box">
-        <form class="gy-2 gx-3 align-items-center">
+        <form class="gy-2 gx-3 align-items-center" id="beneficio">
             <div class="row">
                 <div class="col-md-6">
                     <label for="nome">Nome do Benefício</label>
-                    <input type="text" class="form-control" id="nome">
+                    <input type="text" class="form-control" id="nome" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="valor">Valor</label>
                     <div class="input-group">
                         <div class="input-group-text">R$:</div>
-                        <input type="number" id="valor" class="form-control">
+                        <input type="number" id="valor" class="form-control" required>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="descricao">Descrição</label>
-                    <input type="text" class="form-control" id="descricao">
+                    <input type="text" class="form-control" id="descricao" required>
                 </div>
             </div>
 
@@ -59,3 +59,34 @@
         </form>
     </div>
 </div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // CADASTRA BENEFICIO NA API
+            $("#beneficio").on('submit', function (e) {
+                e.preventDefault();
+                let settings = {
+                    "url": BaseUrl + "/beneficios",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "nome": $('#nome').val(),
+                        "descricao": $('#descricao').val(),
+                        "valorBeneficio": $('#valor').val(),
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    alert(response);
+                    window.location.href = "/beneficio/list"
+                });
+            })
+        });
+    </script>
+}

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model List<BeneficioViewModel>
+
+@{
     ViewData["Title"] = "Benefícios";
+    var i = 0;
 }
 
 @section header {
@@ -38,26 +41,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Vale Transporte</td>
-                        <td>240,00</td>
-                        <td>Auxílio Transporte Mensal</td>
-                        <td class="text-right">
-                            <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Ver</a></li>
-                                    <li><a class="dropdown-item" href="#">Editar</a></li>
-                                    <li><a class="dropdown-item" href="#">Deletar</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var b in Model)
+                    {
+                        ++i;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@b.Nome</td>
+                            <td>@b.ValorBeneficio</td>
+                            <td>@b.Descricao</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="@Url.Action("delete", "beneficio", new {id = b.Id})">Deletar</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+}

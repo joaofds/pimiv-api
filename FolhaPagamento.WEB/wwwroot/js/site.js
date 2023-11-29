@@ -2,3 +2,4 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+const BaseUrl = "http://localhost:5256/api"
