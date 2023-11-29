@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<ColaboradorViewModel>
+
+@{
     ViewData["Title"] = "Colaboradores";
 }
 
@@ -40,26 +42,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>123.456.789-00</td>
-                        <td>01/01/2023</td>
-                        <td>01/01/2024</td>
-                        <td>Atendente</td>
-                        <td class="text-right">
-                            <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Ver</a></li>
-                                    <li><a class="dropdown-item" href="#">Editar</a></li>
-                                    <li><a class="dropdown-item" href="#">Deletar</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var c in Model)
+                    {
+                        var i = 1;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@c.nome</td>
+                            <td>@c.cpf</td>
+                            <td>@c.dataAdmissao</td>
+                            <td>@c.dataAdmissao</td>
+                            <td>@(c.CargoId == 1 ? "Gerente" : "Atendente")</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Ver</a></li>
+                                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("delete", "colaborador", new {id = c.Id})">Deletar</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        i++;
+                    }
                 </tbody>
             </table>
         </div>

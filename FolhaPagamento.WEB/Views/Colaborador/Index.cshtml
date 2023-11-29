@@ -26,13 +26,18 @@
 
 <div class="text-start p-5">
     <div class="w-75 form-box">
-        <form class="gy-2 gx-3 align-items-center">
+        @{
+            if (ViewBag.Error != null)
+            {
+                    <div class="alert alert-danger" role="alert">Oops, E-mail ou senha incorretos! :(</div>
+            }
+        }
+        <form method="post" action="@Url.Action("create", "colaborador")" class="gy-2 gx-3 align-items-center">
             <div class="row">
                 <div class="col-md-5">
                     <label for="Nome">Nome Completo</label>
-                    <input type="text" class="form-control" id="responsavel">
+                    <input type="text" class="form-control" id="responsavel" name="nome">
                 </div>
-
                 <div class="col-md-2">
                     <label for="Cep">CEP</label>
                     <input type="text" class="form-control" id="cep">
@@ -47,7 +52,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf">
+                    <input type="text" class="form-control" id="cpf" name="cpf">
                 </div>
 
                 <div class="col-md-2">
@@ -112,16 +117,14 @@
                     <label for="admissao">Data de Admissão</label>
                     <div class="input-group">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        <input type="date" id="admissao" class="form-control">
+                        <input type="date" id="admissao" class="form-control" name="dataAdmissao">
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <label for="cargo">Cargo</label>
-                    <select class="form-select" id="cargo">
+                    <select class="form-select" id="cargos" name="cargoId">
                         <option selected>Selecione o cargo...</option>
-                        <option value="1">Atendente</option>
-                        <option value="2">Gerente</option>
                     </select>
                 </div>
 
@@ -129,7 +132,7 @@
                     <label for="salario">Salário</label>
                     <div class="input-group">
                         <div class="input-group-text">R$:</div>
-                        <input type="number" id="salario" class="form-control">
+                        <input type="number" id="salario" class="form-control" readonly>
                     </div>
                 </div>
             </div>
@@ -144,3 +147,35 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const BaseUrl = "http://localhost:5256/api"
+
+            // BUSCA CARGOS NA API E PREENCHE SELECT
+            var settings = {
+                "url": BaseUrl + "/cargos",
+                "method": "GET",
+                "timeout": 0,
+            };
+
+            $.ajax(settings).done(function (data) {
+                console.log(data);
+
+                let sel = $("#cargos");
+                for (var i = 0; i < data.length; i++) {
+                    sel.append('<option value="' + data[i].id + '" data="'+ data[i].salario +'">' + data[i].nome + '</option>');
+                }
+            });
+
+            // preenche salario no formulario de acordo com cargo selecionado
+            $('#cargos').change(function () {
+                let attrValue = $('option:selected', this).attr('data');
+                $('#salario').val(attrValue);
+            })
+
+
+        });
+    </script>
+}
