@@ -5,10 +5,10 @@ namespace FolhaPagamento.WEB.Models
     public class ColaboradorViewModel
     {
         [JsonPropertyName("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
-        [JsonPropertyName("CargoId")]
-        public int CargoId { get; set; }
+        [JsonPropertyName("cargoId")]
+        public int? cargoId { get; set; }
 
         [JsonPropertyName("nome")]
         public string? nome { get; set; }
@@ -17,9 +17,12 @@ namespace FolhaPagamento.WEB.Models
         public string? cpf { get; set; }
 
         [JsonPropertyName("dataAdmissao")]
-        public string? dataAdmissao { get; set; }
+        public DateTime? dataAdmissao { get; set; }
 
         [JsonPropertyName("dataSaida")]
-        public string? dataSaida { get; set; }
+        public DateTime? dataSaida { get; set; }
+
+        [JsonPropertyName("status")]
+        public byte? Status { get; set; }
     }
 }

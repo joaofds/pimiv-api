@@ -3,6 +3,7 @@ using FolhaPagamento.WEB.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace FolhaPagamento.WEB.Controllers
 {
@@ -11,42 +12,6 @@ namespace FolhaPagamento.WEB.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(
-            int cargoId, 
-            string nome, 
-            string cpf,
-            string dataAdmissao
-        )
-        {
-
-            var colaborador = new ColaboradorViewModel();
-            colaborador.CargoId = cargoId;
-            colaborador.nome = nome;
-            colaborador.cpf = cpf;
-            colaborador.dataAdmissao = dataAdmissao;
-            string json = JsonSerializer.Serialize(colaborador);
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, $"{ApiService.BaseUrl}/colaboradores");
-            var content = new StringContent(json, null, "application/json");
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-
-            return RedirectToAction("All");
-
-
-            //if (response.StatusCode.Equals(200))
-            //{
-            //    return RedirectToAction("All");
-            //}
-
-            //ViewBag.Error = "Oops, erro ao tentar cadastrar colaborador.";
-            //return View();
         }
 
         [HttpGet("colaborador/list")]

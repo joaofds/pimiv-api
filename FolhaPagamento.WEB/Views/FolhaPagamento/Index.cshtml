@@ -36,7 +36,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" required>
+                    <select class="form-select" id="colaborador" name="nome">
+                        <option selected>Buscar colaborador...</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label for="cpf">CPF</label>
@@ -138,3 +140,33 @@
         </div>
     </form>
 </div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // BUSCA COLABORADORES
+            let colaboradores = null;
+            let settings = {
+                "url": BaseUrl + "/colaboradores",
+                "method": "GET",
+                "timeout": 0,
+            };
+
+            $.ajax(settings).done(function (data) {
+                colaboradores = data;
+
+                let select = $("#colaborador");
+                for (var i = 0; i < data.length; i++) {
+                    select.append('<option value="' + data[i].id + '" data="' + data[i].id + '">' + data[i].nome + '</option>');
+                }
+            });
+
+            $('#colaborador').change(function () {
+                let id = $('option:selected', this).attr('data');
+                console.log(colaboradores);
+            })
+        });
+    </script>
+}

@@ -32,11 +32,11 @@
                     <div class="alert alert-danger" role="alert">Oops, E-mail ou senha incorretos! :(</div>
             }
         }
-        <form method="post" action="@Url.Action("create", "colaborador")" class="gy-2 gx-3 align-items-center">
+        <form class="gy-2 gx-3 align-items-center" id="colaborador">
             <div class="row">
                 <div class="col-md-5">
                     <label for="Nome">Nome Completo</label>
-                    <input type="text" class="form-control" id="responsavel" name="nome">
+                    <input type="text" class="form-control" id="nome" name="nome">
                 </div>
                 <div class="col-md-2">
                     <label for="Cep">CEP</label>
@@ -123,8 +123,8 @@
 
                 <div class="col-md-4">
                     <label for="cargo">Cargo</label>
-                    <select class="form-select" id="cargos" name="cargoId">
-                        <option selected>Selecione o cargo...</option>
+                    <select class="form-select" id="cargos" name="cargoId" required>
+                        <option value="" selected>Selecione o cargo...</option>
                     </select>
                 </div>
 
@@ -151,17 +151,13 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            const BaseUrl = "http://localhost:5256/api"
 
             // BUSCA CARGOS NA API E PREENCHE SELECT
-            var settings = {
+            $.ajax({
                 "url": BaseUrl + "/cargos",
                 "method": "GET",
                 "timeout": 0,
-            };
-
-            $.ajax(settings).done(function (data) {
-                console.log(data);
+            }).done(function (data) {
 
                 let sel = $("#cargos");
                 for (var i = 0; i < data.length; i++) {
@@ -175,7 +171,42 @@
                 $('#salario').val(attrValue);
             })
 
+            // SALVA COLABORADOR
+            const colaborador = JSON.stringify({
+                "nome": $("#nome").val(),
+                "cpf": $("#cpf").val(),
+                "dataAdmissao": $("#admissao").val() + 'T' + getDateTime().split(" ")[1],
+                "cargoId": $("#cargos").val(),
+                "status": 1
+            })
 
+            const endereco = JSON.stringify({
+                "colaboradorId": 3,
+                "cep": $("#cep").val(),
+                "logradouro": $("#logradouro").val(),
+                "numero": $("#numero").val(),
+                "bairro": $("#bairro").val(),
+                "cidade": $("#cidade").val(),
+                "uf": $("#uf").val(),
+                "complemento": $("#complemento").val(),
+            })
+
+            $("#colaborador").on('submit', function (e) {
+                e.preventDefault();
+                console.log($("#admissao").val())
+                $.ajax({
+                    "url": BaseUrl + "/colaboradores",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": colaborador
+                }).done(function (response) {
+                    alert(response)
+                    window.location.href = "/colaborador/list"
+                });
+            })
         });
     </script>
 }
