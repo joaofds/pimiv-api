@@ -54,6 +54,7 @@ builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 builder.Services.AddScoped<IBeneficioRepository, BeneficioRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IFolhaPagamentoRepository, FolhaPagamentoRepository>();
+builder.Services.AddScoped<IReservaRepository, ReservaRepository>();
 
 var app = builder.Build();
 

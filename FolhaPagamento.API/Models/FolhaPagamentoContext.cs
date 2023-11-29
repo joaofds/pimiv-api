@@ -31,6 +31,8 @@ public partial class FolhaPagamentoContext : DbContext
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
+    public virtual DbSet<Reserva> Reserva{ get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=LOCALHOST;Initial Catalog=FolhaPagamento;User ID=sa;Password=root;trustservercertificate=true");
 
