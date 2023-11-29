@@ -27,7 +27,7 @@
 <div class="text-start p-5">
     <div class="row">
         <div class="w-50 form-box">
-            <form class="row gy-2 gx-3 align-items-center">
+            <form class="row gy-2 gx-3 align-items-center" id="reserva">
                 <div class="col-auto">
                     <label for="responsavel">Responsável</label>
                     <input type="text" class="form-control" id="responsavel">
@@ -36,25 +36,25 @@
                     <label for="data">Data</label>
                     <div class="input-group">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        <input type="date" id="data" class="form-control">
+                        <input type="date" class="form-control" id="data">
                     </div>
                 </div>
                 <div class="col-auto">
                     <label for="hora">Hora</label>
                     <div class="input-group">
                         <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
-                        <input type="time" id="hora" class="form-control">
+                        <input type="time" class="form-control" id="hora">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <label for="qtdeHoras">QTDE Horas</label>
                     <div class="input-group">
-                        <input type="number" id="qtdeHoras" class="form-control">
+                        <input type="number" class="form-control" id="qtdeHoras">
                     </div>
                 </div>
                 <div class="col-auto">
                     <label for="space">Campo/Quadra</label>
-                    <select class="form-select" id="autoSizingSelect">
+                    <select class="form-select" id="espaco">
                         <option selected>Selecione uma opção...</option>
                         <option value="1">Campo Gramado</option>
                         <option value="2">Campo Sintetico</option>
@@ -65,13 +65,13 @@
                     <label for="valor">Valor Atual</label>
                     <div class="input-group">
                         <div class="input-group-text">R$:</div>
-                        <input type="number" min="60.00" step="60.00" value="60.00" id="valor" class="form-control" readonly>
+                        <input type="number" min="60.00" step="60.00" value="60.00" class="form-control" id="valor" readonly>
                     </div>
                 </div>
                 <div class="col-auto">
                     <div class="form-check">
                         <label class="form-check-label" for="confirmado">Confirmado?</label>
-                        <input type="checkbox" class="form-check-input" id="confirmado">
+                        <input type="checkbox" class="form-check-input bg-success" id="confirmado">
                     </div>
                 </div>
                 <div class="row">
@@ -85,3 +85,70 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            function getDateTime() {
+                const dateObj = new Date();
+
+                let year = dateObj.getFullYear();
+
+                let month = dateObj.getMonth();
+                month = ('0' + (month + 1)).slice(-2);
+                // To make sure the month always has 2-character-format. For example, 1 => 01, 2 => 02
+
+                let date = dateObj.getDate();
+                date = ('0' + date).slice(-2);
+                // To make sure the date always has 2-character-format
+
+                let hour = dateObj.getHours();
+                hour = ('0' + hour).slice(-2);
+                // To make sure the hour always has 2-character-format
+
+                let minute = dateObj.getMinutes();
+                minute = ('0' + minute).slice(-2);
+                // To make sure the minute always has 2-character-format
+
+                let second = dateObj.getSeconds();
+                second = ('0' + second).slice(-2);
+                // To make sure the second always has 2-character-format
+
+                return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
+            }
+
+            $('#confirmado').change(function() {
+                confirmado = this.value ^= 1;
+            })
+
+            // CADASTRA RESERVA NA API
+            $("#reserva").on('submit', function (e) {
+                e.preventDefault();
+
+                let settings = {
+                    "url": BaseUrl + "/reservas",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "Responsavel": $('#responsavel').val(),
+                        "DataReserva": $('#data').val() +'T'+ $('#hora').val(),
+                        "QtdeHoras": $('#qtdeHoras').val(),
+                        "Espaco": $('#espaco').val(),
+                        "Valor": $('#valor').val(),
+                        "Confirmado": ($('#confirmado').is(':checked')) ? 1 : 0,
+                        "CreatedAt": getDateTime().split(" ")[0] +'T'+ getDateTime().split(" ")[1],
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    alert(response);
+                    window.location.href = "/reserva/list"
+                });
+            })
+        });
+    </script>
+}

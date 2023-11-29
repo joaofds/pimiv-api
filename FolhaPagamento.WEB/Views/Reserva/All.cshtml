@@ -1,5 +1,8 @@
-﻿@{
+﻿@model List<ReservaViewModel>
+
+@{
     ViewData["Title"] = "Reservas";
+    var i = 0;
 }
 
 @section header {
@@ -39,25 +42,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>01/01/2024</td>
-                        <td>Campo 1</td>
-                        <td>2</td>
-                        <td class="text-right">
-                            <div class="dropdown">
-                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Ver</a></li>
-                                    <li><a class="dropdown-item" href="#">Editar</a></li>
-                                    <li><a class="dropdown-item" href="#">Deletar</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach (var reserva in Model)
+                    {
+                        ++i;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@reserva.Responsavel</td>
+                            <td>@reserva.DataReserva</td>
+                            <td>@reserva.Espaco</td>
+                            <td>@reserva.QtdeHoras</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("delete", "reserva", new {id = reserva.Id})">Deletar</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
