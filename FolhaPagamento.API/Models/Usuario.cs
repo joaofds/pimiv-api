@@ -39,5 +39,5 @@ public partial class Usuario
     public byte? Status { get; set; }
 
     [Column("data_registro", TypeName = "datetime")]
-    public DateTime? DataRegistro { get; set; }
+    public DateTime? dataRegistro { get; set; }
 }
