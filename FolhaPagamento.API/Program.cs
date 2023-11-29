@@ -8,6 +8,18 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#region [Cors]
+builder.Services.AddCors(cors =>
+{
+    cors.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin();
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+    });
+});
+#endregion
+
 // Add services to the container.
 builder.Services.AddDbContext<FolhaPagamentoContext>();
 
@@ -46,6 +58,9 @@ builder.Services.AddScoped<IFolhaPagamentoRepository, FolhaPagamentoRepository>(
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+#region [Cors]
+app.UseCors();
+#endregion
 
 app.UseAuthorization();
 
